@@ -1,0 +1,28 @@
+name: Test TasksManager Build
+run-name: ${{ github.actor }} is testing TasksManager build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Hello:
+    name: Give self-hosted runner welcome!
+    runs-on: self-hosted
+    steps:
+      - run: echo "[+] Testing build..."
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event"
+      - run: echo "This job is now running on a ${{ runner.os }} server self-hosted"
+      - run: echo "The name of your branch is ${{ github.ref }} and your repo is ${{ github.repository }}"
+  Build:
+    name: Build TasksManager
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up build environment
+        run: make --version && gcc --version
+
+      - name: Build with make
+        run: make
