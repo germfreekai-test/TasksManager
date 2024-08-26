@@ -1,0 +1,8 @@
+# bin
+bin/tasksmanager
+
+# obj
+obj/*.o
+
+# vscode
+.vscode/*
